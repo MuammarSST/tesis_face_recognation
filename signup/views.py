@@ -3,20 +3,18 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 from hashlib import md5
 
-from signup.forms import BiodataUser
+
 
 
 
 def signAction(request):
-    form=BiodataUser(request.POST)
-    if request.method=='POST':
-        if form.is_valid():
 
-            firstname = form.cleaned_data['firstname']
-            lastname = form.cleaned_data['lastname']
-            sex = form.cleaned_data['sex']
-            email = form.cleaned_data['email']
-            password = form.cleaned_data['email']
+    if request.method=='POST':
+            firstname = request.POST.get('firstname')
+            lastname = request.POST.get('lastname')
+            sex = request.POST.get('sex')
+            email = request.POST.get('email')
+            password = request.POST.get('password')
             password_hash = md5( password.encode("utf-8") ).hexdigest()
 
 
@@ -38,5 +36,4 @@ def signAction(request):
             mydb.commit()
 
             return redirect("/")
-        pass
     return render(request,"signup_page.html")

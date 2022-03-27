@@ -6,7 +6,11 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
 
 </head>
-<body>
+<body class="container">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="/">Home</a>
+      </nav>
+
 	<center>
         <h1>Data Presensi menggunakan framework Django</h1>
 	</center>
@@ -22,21 +26,27 @@
 			<thead>
 
 				<tr>
-					<th>Nama Depan</th>
+					<th>No</th>
+                    <th>Nama Depan</th>
 					<th>Nama Belakang</th>
 					<th>Jenis Kelamin</th>
-					<th>email</th>
-                    <th>password</th>
+					<th>Email</th>
+                    <th>Password</th>
+                    <th>Aksi</th>
 				</tr>
 			</thead>
 			<tbody>
+
                 {% for user in data %}
 				<tr>
+                    <td>{{user.id_user}}</td>
 					<td>{{user.firstname}}</td>
 					<td>{{user.lastname}}</td>
 					<td>{{user.sex}}</td>
 					<td>{{user.email}}</td>
                     <td>{{user.password}}</td>
+                     <td>aksi</td>
+
                 </tr>
                 {% endfor %}
 			</tbody>

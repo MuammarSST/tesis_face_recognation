@@ -4,9 +4,10 @@ from django.shortcuts import render
 from index.models import Data_user
 
 
+
 def indexAction(request):
-    hasil=Data_user.objects.all()
-    data={
-        'data':hasil,
+    hasil = Data_user.objects.all()
+    data = {
+        'data': hasil,
     }
-    return render(request,'index_page.html',data)
+    return render(request, 'index_page.html', data)
